@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap');
+
+
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+
+.card {
+  position: relative;
+  margin: 30px auto;
+  width: 300px;
+  height: 400px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+h2.skills-header {
+  
+ text-align: center;
+ font-family: "Montserrat", sans-serif;
+ font-weight: bold;
+ font-size: 50px;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  z-index: 1;
+ 
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+ 
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -150px;
+  height: 40px;
+  color: black;
+  
+}
+
+
+
+.bubbles {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+      
+  .bubble {
+    border-radius: 100%;
+    transform: translateY(800px) scale(0);
+    opacity: 0.8;
+    animation-name: bubbles;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    
+    &:before {
+       content: '';
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        width: 90%;
+        height: 50%;
+        border-radius: 100%;
+        filter: blur(5px);
+        background: radial-gradient(60deg,
+      red,  #EA47AC 22%, #E5C028 63%);
+    }
+  } 
+}
+  
+
+@for $i from 1 through (400) {
+  $size: random(130) + px;
+  .bubble:nth-of-type(#{$i}) {
+    width: $size;
+    height: $size;
+    top: random(100) + vh;
+    left: random(100) + vw;
+    animation-delay: $i * (.5s/ 15);
+    animation-duration: (random(35) + 2) + s;
+  }
+}
+
+
+
+
+
+.card:hover {
+  transform: scale(1.2, 1.2);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+
+
+.title-black {
+  color: #fff;
+}
+
+p {
+  color: #fff;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+@keyframes bubbles {
+  100% {
+      transform: translateY(-900px) scale(1) rotate(360deg);
+    }
+  }
+
+
+
+/*.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  transition: 0.4s;
+}*/
